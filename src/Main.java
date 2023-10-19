@@ -1,7 +1,5 @@
 import processing.core.PApplet;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main extends PApplet {
     private final int NUM_ROWS = 50;
     private final int NUM_COLUMNS = 100;
@@ -33,6 +31,11 @@ public class Main extends PApplet {
                 MooreRules mooreRules = new MooreRules(new int[]{3}, new int[]{2, 3}); //mooreRules arrays
                 cells[r][c] = new Cell(c * CELL_SIZE, r * CELL_SIZE, CELL_SIZE, r, c, CellState.DEAD, mooreRules);
                 //creates new cell at each row and column.
+            }
+        }
+        for(int r = 1; r < (NUM_ROWS-1); r+=1){
+            for(int c = 1; c < (NUM_COLUMNS-1); c+=1){
+                cells[r][c].randomState();
             }
         }
     }

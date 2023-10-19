@@ -1,10 +1,11 @@
 public class Cell {
+    private final double randomStateRate = 0.95;
     private int x;
     private int y;
     private int size;
     private int row;
-    private CellState cellState;
     private int column;
+    private CellState cellState;
     private MooreRules rules;
 
 
@@ -62,6 +63,18 @@ public class Cell {
      */
     public void handleClick() {
         if(cellState == CellState.ALIVE) {
+            cellState = CellState.DEAD;
+        }else{
+            cellState = CellState.ALIVE;
+        }
+    }
+
+    /**
+     * This method randomly assigns dead or alive state to cells at the beginning of the
+     * program running.
+     */
+    public void randomState() {
+        if(Math.random() < randomStateRate) {
             cellState = CellState.DEAD;
         }else{
             cellState = CellState.ALIVE;
